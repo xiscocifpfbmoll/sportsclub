@@ -7,7 +7,7 @@ on:
   pull_request:
     branches: [main, develop]
 
-env:
+env:  
   # Django
   SECRET_KEY: secret
   DEBUG: "False"
@@ -167,3 +167,19 @@ jobs:
       - name: Stop services
         if: always()
         run: docker compose down -v
+
+  security:
+    name: Escaneo de vulnerabilidades
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Instalar Trivy
+        run: |
+          sudo apt install wget -y
+          wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.47.0_Linux-64bit.deb
+          sudo dpkg -i trivy_0.47.0_Linux-64bit.deb
+
+      - name: Escanear proyecto
+        run: trivy fs .
