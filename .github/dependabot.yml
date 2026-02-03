@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"   # Python
+    directory: "/"             # Carpeta donde está requirements.txt
+    schedule:
+      interval: "weekly"       # Revisión semanal
