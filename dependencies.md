@@ -5,25 +5,6 @@
 GitHub tiene una herramienta llamada **Dependabot**, que revisa automáticamente las dependencias del proyecto buscando vulnerabilidades conocidas y propone actualizaciones mediante alertas o pull requests.
 
 ---
-
-## Cómo activamos Dependabot
-
-1. Hicimos fork del repositorio.
-2. Entramos en **Settings → Security → Code security**.
-3. Activamos:
-   - Dependency graph
-   - Dependabot alerts
-   - Dependabot security updates
-4. Creamos el archivo `.github/dependabot.yml` con esta configuración:
-
-```yaml
-version: 2
-updates:
-  - package-ecosystem: "pip"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-
 ## Alternativas a Dependabot en entornos privados
 
 Si el repositorio estuviera en un servidor privado o en una nube privada y no pudiéramos usar GitHub Dependabot, se podrían usar herramientas como:
@@ -63,4 +44,23 @@ Comunidad: activa, open-source
 ## Herramienta elegida y ejecución
 
 Para este proyecto se eligió Trivy:
+
+
+## Cómo activamos Dependabot
+
+1. Hicimos fork del repositorio.
+2. Entramos en **Settings → Security → Code security**.
+3. Activamos:
+   - Dependency graph
+   - Dependabot alerts
+   - Dependabot security updates
+4. Creamos el archivo `.github/dependabot.yml` con esta configuración:
+
+```yaml
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
 
