@@ -1,5 +1,4 @@
 import requests
-import sys
 
 # The target URL
 # URL = "https://github.com/"
