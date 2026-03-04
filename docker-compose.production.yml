@@ -1,0 +1,22 @@
+services:
+  postgres:
+    restart: always
+    ports: !override []          # NO exponer al host
+
+  app-blue:
+    restart: always
+    depends_on:
+      - postgres
+
+  app-green:
+    restart: always
+    depends_on:
+      - postgres
+
+  nginx:
+    restart: always
+    ports:
+      - "80:80"        # SOLO NGINX expuesto
+    depends_on:
+      - app-blue
+      - app-green
